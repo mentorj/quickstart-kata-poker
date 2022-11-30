@@ -178,4 +178,24 @@ public class PokerHandsTestssuite {
         assertFalse(checker.checkHandContainsFourOfAKind(threeOfAKindHand));
     }
 
+
+    @Test
+    void  handContains2PairsWithMatchingHand(){
+        HandChecker checker = new HandChecker();
+        assertTrue(checker.handContains2Pairs(twoPairsHand));
+    }
+
+    @Test
+    void handContains2PairsWithSinglePair(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.handContains2Pairs(basicPairHand));
+    }
+
+    @Test
+    void handContains2PairsWithFooHand(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.handContains2Pairs(fooHand));
+    }
+
+
 }
