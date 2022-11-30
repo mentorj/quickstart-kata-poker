@@ -160,5 +160,22 @@ public class PokerHandsTestssuite {
     }
 
 
+    @Test
+    void checkHandContainsFourOfAkindWithFooHand(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.checkHandContainsFourOfAKind(fooHand));
+    }
+
+    @Test
+    void checkHandContainsFourOfAkindWithMatchingHand(){
+        HandChecker checker = new HandChecker();
+        assertTrue(checker.checkHandContainsFourOfAKind(fourAKindHand));
+    }
+
+    @Test
+    void checkHandContainsFourOfAkindWith3OfAKind(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.checkHandContainsFourOfAKind(threeOfAKindHand));
+    }
 
 }

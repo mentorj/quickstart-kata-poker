@@ -5,15 +5,21 @@ package com.javaxpert.books.prodev.katas.poker;
  * @author deadbrain
  */
 public class HandChecker {
-
+    private boolean checkForNCardsWithSameRank(Hand hand,int groupSize){
+        return hand.getCards()
+                .groupBy(card -> card.getRank())
+                .filter((rank, cards) -> cards.size()==groupSize)
+                .size()==1;
+    }
     public boolean checkHandForOnePair(Hand hand) {
-        return hand.getCards().groupBy(card -> card.getRank()).filter(tuple -> tuple._2.size()==2).size()==1;
+        return checkForNCardsWithSameRank(hand,2);
     }
 
     public boolean checkForThreeOfAKindInHand(Hand hand) {
-        return hand.getCards()
-                .groupBy(card -> card.getRank())
-                .filter((rank, cards) -> cards.size()==3)
-                .size()==1;
+        return checkForNCardsWithSameRank(hand,3);
+    }
+
+    public boolean checkHandContainsFourOfAKind(Hand hand){
+        return checkForNCardsWithSameRank(hand,4);
     }
 }
