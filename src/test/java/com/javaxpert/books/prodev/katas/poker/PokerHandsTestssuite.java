@@ -1,6 +1,8 @@
 package com.javaxpert.books.prodev.katas.poker;
 
-import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +41,7 @@ public class PokerHandsTestssuite {
     private static final List<Card> royalFlush = new ArrayList<>(5);
     private Hand royalFlushHand;
 
-    @BeforeAll
+    @BeforeEach
     void setupTests(){
         fooCards.add(new Card(Rank.FIVE,Color.DIAMOND));
         fooCards.add(new Card(Rank.SEVEN,Color.DIAMOND));
@@ -67,6 +69,7 @@ public class PokerHandsTestssuite {
         threeOfAKind.add(new Card(Rank.NINE,Color.DIAMOND));
         threeOfAKind.add(new Card(Rank.FOUR,Color.SPADE));
         threeOfAKind.add(new Card(Rank.JACK,Color.TREFLE));
+        threeOfAKindHand = new Hand(threeOfAKind);
 
         fourOfAKind.add(new Card(Rank.JACK,Color.TREFLE));
         fourOfAKind.add(new Card(Rank.JACK,Color.SPADE));
@@ -106,5 +109,36 @@ public class PokerHandsTestssuite {
 
 
     }
+
+
+    @Test
+    void checkForSinglePairInHandWithBasicPairHand(){
+        HandChecker checker = new HandChecker();
+        boolean check = checker.checkHandForOnePair(basicPairHand);
+        assertTrue(check);
+    }
+
+    @Test
+    void checkForSinglePairInHandWithFooHand(){
+        HandChecker checker= new HandChecker();
+        boolean check = checker.checkHandForOnePair(fooHand);
+        assertFalse(check);
+    }
+
+    @Test
+    void checkForSinglePairInHandWithThreeOfAKind(){
+        HandChecker checker = new HandChecker();
+        boolean check = checker.checkHandForOnePair(threeOfAKindHand);
+        assertFalse(check);
+    }
+
+    @Test
+    void checkForSinglePairInHandWithHandContaining2Pairs(){
+        HandChecker checker = new HandChecker();
+        boolean check = checker.checkHandForOnePair(twoPairsHand);
+        assertFalse(check);
+    }
+
+
 
 }

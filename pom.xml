@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.decathlon.katas.poker</groupId>
+    <groupId>com.javaxpert.books.prodev</groupId>
     <artifactId>quickstart-kata-poker-hands</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -12,7 +12,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.jupiter.version>5.8.1</junit.jupiter.version>
+        <junit.jupiter.version>5.9.0</junit.jupiter.version>
         <junit.platform.version>1.8.1</junit.platform.version>
     </properties>
     <dependencies>
@@ -27,6 +27,12 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>0.10.4</version>
         </dependency>
     </dependencies>
 

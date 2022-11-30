@@ -1,6 +1,7 @@
 package com.javaxpert.books.prodev.katas.poker;
 
-import java.util.List;
+
+import io.vavr.collection.List;
 
 /**
  * hand of cards (5)
@@ -10,8 +11,8 @@ import java.util.List;
 public class Hand {
     private List<Card> cards;
 
-    public Hand(List<Card> cards) {
-        this.cards = cards;
+    public Hand(java.util.List<Card> cards) {
+        this.cards = List.ofAll(cards);
     }
 
     public List<Card> getCards() {
