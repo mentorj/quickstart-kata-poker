@@ -1,4 +1,4 @@
-package com.decathlon.katas.progfunc.poker;
+package com.javaxpert.books.prodev.katas.poker;
 
 /**
  * Rank of any card
