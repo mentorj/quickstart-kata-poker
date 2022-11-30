@@ -9,4 +9,11 @@ public class HandChecker {
     public boolean checkHandForOnePair(Hand hand) {
         return hand.getCards().groupBy(card -> card.getRank()).filter(tuple -> tuple._2.size()==2).size()==1;
     }
+
+    public boolean checkForThreeOfAKindInHand(Hand hand) {
+        return hand.getCards()
+                .groupBy(card -> card.getRank())
+                .filter((rank, cards) -> cards.size()==3)
+                .size()==1;
+    }
 }

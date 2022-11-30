@@ -1,6 +1,8 @@
 package com.javaxpert.books.prodev.katas.poker;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,36 +15,36 @@ import java.util.List;
  */
 public class PokerHandsTestssuite {
     private static final List<Card> fooCards= new ArrayList<>(5);
-    private  Hand fooHand;
+    private  static Hand fooHand;
 
     private static final  List<Card> basicPair = new ArrayList<>(5);
-    private Hand basicPairHand;
+    private static Hand basicPairHand;
 
     private static final List<Card> twoPairs = new ArrayList<>(5);
-    private Hand twoPairsHand;
+    private static Hand twoPairsHand;
 
     private static final List<Card> threeOfAKind = new ArrayList<>(5);
-    private Hand threeOfAKindHand;
+    private static Hand threeOfAKindHand;
 
     private static final List<Card> fourOfAKind = new ArrayList<>(5);
-    private Hand fourAKindHand;
+    private static Hand fourAKindHand;
 
 
     private static final List<Card> fullHouse = new ArrayList<>(5);
-    private Hand fullHouseHand;
+    private static Hand fullHouseHand;
 
 
     private static final List<Card> flush = new ArrayList<>(5);
-    private Hand flushHand;
+    private static Hand flushHand;
 
     private static final List<Card> straight = new ArrayList<>(5);
-    private Hand straightHand;
+    private static Hand straightHand;
 
     private static final List<Card> royalFlush = new ArrayList<>(5);
-    private Hand royalFlushHand;
+    private static Hand royalFlushHand;
 
-    @BeforeEach
-    void setupTests(){
+    @BeforeAll
+    static void setupTests(){
         fooCards.add(new Card(Rank.FIVE,Color.DIAMOND));
         fooCards.add(new Card(Rank.SEVEN,Color.DIAMOND));
         fooCards.add(new Card(Rank.SIX,Color.HEART));
@@ -137,6 +139,24 @@ public class PokerHandsTestssuite {
         HandChecker checker = new HandChecker();
         boolean check = checker.checkHandForOnePair(twoPairsHand);
         assertFalse(check);
+    }
+
+    @Test
+    void checkForThreeOfAKindInHandWithThreeOfAkind(){
+        HandChecker checker = new HandChecker();
+        assertTrue( checker.checkForThreeOfAKindInHand(threeOfAKindHand));
+    }
+
+    @Test
+    void checkForThreeOfAKindInHandWithBasicHand(){
+        HandChecker checker = new HandChecker();
+        assertFalse( checker.checkForThreeOfAKindInHand(fooHand));
+    }
+
+    @Test
+    void checkForThreeOfAKindInHandWithFourOfAKind(){
+        HandChecker checker = new HandChecker();
+        assertFalse( checker.checkForThreeOfAKindInHand(fourAKindHand));
     }
 
 
