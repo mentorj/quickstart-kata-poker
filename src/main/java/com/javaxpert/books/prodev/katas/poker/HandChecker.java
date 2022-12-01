@@ -26,4 +26,8 @@ public class HandChecker {
     public boolean handContains2Pairs(Hand hand){
         return checkForNCardsWithSameRankWithOccurences(hand,2,2);
     }
+
+    public boolean handContainsFullHouse(Hand hand){
+        return checkHandForOnePair(hand) && checkForThreeOfAKindInHand(hand);
+    }
 }

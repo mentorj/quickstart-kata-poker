@@ -198,4 +198,27 @@ public class PokerHandsTestssuite {
     }
 
 
+    @Test
+    void noComboHandDoesNotContainFullHouse(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.handContainsFullHouse(fooHand));
+    }
+
+    @Test
+    void handWithOnePairoDoesNotContainFullHouse(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.handContainsFullHouse(basicPairHand));
+    }
+
+    @Test
+    void handWit3OfAKindDoesNotContainFullHouse(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.handContainsFullHouse(threeOfAKindHand));
+    }
+
+    @Test
+    void handWithFullHouseCheckIsOk(){
+        HandChecker checker = new HandChecker();
+        assertTrue(checker.handContainsFullHouse(fullHouseHand));
+    }
 }
