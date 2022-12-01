@@ -30,4 +30,11 @@ public class HandChecker {
     public boolean handContainsFullHouse(Hand hand){
         return checkHandForOnePair(hand) && checkForThreeOfAKindInHand(hand);
     }
+
+    public boolean handContainsStraight(Hand hand){
+        return hand.getCards()
+                .groupBy(card -> card.getColor())
+                .filter(colorListTuple2 -> colorListTuple2._2.size()==5)
+                .size()==1;
+    }
 }

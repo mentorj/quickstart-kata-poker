@@ -95,11 +95,11 @@ public class PokerHandsTestssuite {
         flush.add(new Card(Rank.JACK,Color.TREFLE));
         flushHand=new Hand(flush);
 
-        straight.add(new Card(Rank.SEVEN,Color.TREFLE));
-        straight.add(new Card(Rank.EIGHT,Color.DIAMOND));
-        straight.add(new Card(Rank.NINE,Color.SPADE));
+        straight.add(new Card(Rank.ACE,Color.TREFLE));
+        straight.add(new Card(Rank.EIGHT,Color.TREFLE));
+        straight.add(new Card(Rank.NINE,Color.TREFLE));
         straight.add(new Card(Rank.TEN,Color.TREFLE));
-        straight.add(new Card(Rank.JACK,Color.HEART));
+        straight.add(new Card(Rank.JACK,Color.TREFLE));
         straightHand=new Hand(straight);
 
         royalFlush.add(new Card(Rank.ACE,Color.TREFLE));
@@ -220,5 +220,24 @@ public class PokerHandsTestssuite {
     void handWithFullHouseCheckIsOk(){
         HandChecker checker = new HandChecker();
         assertTrue(checker.handContainsFullHouse(fullHouseHand));
+    }
+
+
+    @Test
+    void handWithStraightIsOk(){
+        HandChecker checker = new HandChecker();
+        assertTrue(checker.handContainsStraight(straightHand));
+    }
+
+    @Test
+    void handWithPairIsNotAStraight(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.handContainsStraight(basicPairHand));
+    }
+
+    @Test
+    void handWithThreeOfAKindIsNotAStraight(){
+        HandChecker checker = new HandChecker();
+        assertFalse(checker.handContainsStraight(threeOfAKindHand));
     }
 }
