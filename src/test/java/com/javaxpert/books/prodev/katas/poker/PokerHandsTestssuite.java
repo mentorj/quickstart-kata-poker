@@ -94,7 +94,7 @@ public class PokerHandsTestssuite {
         flush.add(new Card(Rank.EIGHT,Color.TREFLE));
         flush.add(new Card(Rank.NINE,Color.TREFLE));
         flush.add(new Card(Rank.TEN,Color.TREFLE));
-        flush.add(new Card(Rank.JACK,Color.TREFLE));
+        flush.add(new Card(Rank.QUEEN,Color.TREFLE));
         flushHand=new Hand(flush);
 
         straight.add(new Card(Rank.SEVEN,Color.TREFLE));
@@ -270,6 +270,29 @@ public class PokerHandsTestssuite {
         assertFalse(checker.handContainsStraight(basicPairHand));
 
     }
+
+
+    @Test
+    void handWithStraightShouldNotBeSeenAsStraightFlush(){
+        HandChecker checker =  new HandChecker();
+        assertFalse(checker.handContainsStraightFlush(straightHand));
+
+    }
+
+    @Test
+    void handWithFlushShouldNotbeSeenAsStraightFlush(){
+        HandChecker checker =  new HandChecker();
+        assertFalse(checker.handContainsStraightFlush(flushHand));
+
+    }
+
+    @Test
+    void handWithNoComboShouldNotBeSeenAsStraightFlush(){
+        HandChecker checker =  new HandChecker();
+        assertFalse(checker.handContainsStraightFlush(fooHand));
+
+    }
+
 
     @Test
     void handWithUnicolorStraightShouldBeAccepted(){

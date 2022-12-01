@@ -78,4 +78,10 @@ public class HandChecker {
         int max = (int) sortedCards.max().get();
         return max-min==4;
     }
+
+
+    public boolean handContainsStraightFlush(Hand hand) {
+        return handContainsFlush(hand)
+                && handContainsStraight(hand) ;
+    }
 }
