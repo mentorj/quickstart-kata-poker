@@ -3,7 +3,6 @@ package com.javaxpert.books.prodev.katas.poker;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -95,11 +94,11 @@ public class PokerHandsTestssuite {
         flush.add(new Card(Rank.JACK,Color.TREFLE));
         flushHand=new Hand(flush);
 
-        straight.add(new Card(Rank.ACE,Color.TREFLE));
-        straight.add(new Card(Rank.EIGHT,Color.TREFLE));
+        straight.add(new Card(Rank.SEVEN,Color.TREFLE));
+        straight.add(new Card(Rank.EIGHT,Color.SPADE));
         straight.add(new Card(Rank.NINE,Color.TREFLE));
-        straight.add(new Card(Rank.TEN,Color.TREFLE));
-        straight.add(new Card(Rank.JACK,Color.TREFLE));
+        straight.add(new Card(Rank.TEN,Color.HEART));
+        straight.add(new Card(Rank.JACK,Color.DIAMOND));
         straightHand=new Hand(straight);
 
         royalFlush.add(new Card(Rank.ACE,Color.TREFLE));
@@ -224,20 +223,20 @@ public class PokerHandsTestssuite {
 
 
     @Test
-    void handWithStraightIsOk(){
+    void handWithSFlushIsOk(){
         HandChecker checker = new HandChecker();
-        assertTrue(checker.handContainsStraight(straightHand));
+        assertTrue(checker.handContainsFlush(flushHand));
     }
 
     @Test
-    void handWithPairIsNotAStraight(){
+    void handWithPairIsNotAFlush(){
         HandChecker checker = new HandChecker();
-        assertFalse(checker.handContainsStraight(basicPairHand));
+        assertFalse(checker.handContainsFlush(basicPairHand));
     }
 
     @Test
-    void handWithThreeOfAKindIsNotAStraight(){
+    void handWithThreeOfAKindIsNotAFlush(){
         HandChecker checker = new HandChecker();
-        assertFalse(checker.handContainsStraight(threeOfAKindHand));
+        assertFalse(checker.handContainsFlush(threeOfAKindHand));
     }
 }
