@@ -1,7 +1,7 @@
 package com.javaxpert.books.prodev.katas.poker;
 
 import io.vavr.*;
-import io.vavr.collection.List;
+import io.vavr.collection.*;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -45,10 +45,12 @@ public class HandChecker {
     }
 
     public boolean handContainsFlush(Hand hand){
-        return hand.getCards()
-                .groupBy(card -> card.getColor())
-                .filter(colorListTuple2 -> colorListTuple2._2.size()==5)
-                .size()==1;
+
+        return handConformsToCriterias(Card::getColor,
+                criteriaListTuple2 -> criteriaListTuple2._2.size()==5,
+                Function0.constant(1),
+                hand
+                );
     }
     private static boolean handConformsToCriterias(
             Function<Card,Criteria> groupingFunction,
@@ -63,5 +65,17 @@ public class HandChecker {
                 .size()==sizeCriteria.apply()
                 ;
 
+    }
+
+
+    public boolean handContainsStraight(Hand hand) {
+        List<Integer> valuesFromCards = hand.getCards().map(card -> card.getRank().ordinal());
+        SortedSet sortedCards = TreeSet.ofAll(
+                //(card1, card2) ->card1.getRank().ordinal() - card2.getRank().ordinal() ,
+                valuesFromCards
+        );
+        int min=(int) sortedCards.min().get();
+        int max = (int) sortedCards.max().get();
+        return max-min==4;
     }
 }

@@ -39,6 +39,9 @@ public class PokerHandsTestssuite {
     private static final List<Card> straight = new ArrayList<>(5);
     private static Hand straightHand;
 
+    private static final List<Card> spadeStraight = new ArrayList<>(5);
+    private static Hand spadeStraightHand;
+
     private static final List<Card> royalFlush = new ArrayList<>(5);
     private static Hand royalFlushHand;
 
@@ -100,6 +103,14 @@ public class PokerHandsTestssuite {
         straight.add(new Card(Rank.TEN,Color.HEART));
         straight.add(new Card(Rank.JACK,Color.DIAMOND));
         straightHand=new Hand(straight);
+
+        spadeStraight.add(new Card(Rank.FIVE,Color.SPADE));
+        spadeStraight.add(new Card(Rank.SIX,Color.SPADE));
+        spadeStraight.add(new Card(Rank.SEVEN,Color.SPADE));
+        spadeStraight.add(new Card(Rank.EIGHT,Color.SPADE));
+        spadeStraight.add(new Card(Rank.NINE,Color.SPADE));
+        spadeStraightHand=new Hand(spadeStraight);
+
 
         royalFlush.add(new Card(Rank.ACE,Color.TREFLE));
         royalFlush.add(new Card(Rank.KING,Color.TREFLE));
@@ -238,5 +249,31 @@ public class PokerHandsTestssuite {
     void handWithThreeOfAKindIsNotAFlush(){
         HandChecker checker = new HandChecker();
         assertFalse(checker.handContainsFlush(threeOfAKindHand));
+    }
+
+
+    @Test
+    void handContainsStraightReturnsTrueWithStraight(){
+        HandChecker checker =  new HandChecker();
+        assertTrue(checker.handContainsStraight(straightHand));
+    }
+
+    @Test
+    void handContainsStraightReturnsFalseWithNoComboHand(){
+        HandChecker checker =  new HandChecker();
+        assertFalse(checker.handContainsStraight(fooHand));
+    }
+
+    @Test
+    void handContainsStraightReturnsFalseWithPair(){
+        HandChecker checker =  new HandChecker();
+        assertFalse(checker.handContainsStraight(basicPairHand));
+
+    }
+
+    @Test
+    void handWithUnicolorStraightShouldBeAccepted(){
+        HandChecker checker =  new HandChecker();
+        assertTrue(checker.handContainsStraight(spadeStraightHand));
     }
 }
