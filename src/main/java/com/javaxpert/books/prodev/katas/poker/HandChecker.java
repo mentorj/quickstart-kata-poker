@@ -2,9 +2,11 @@ package com.javaxpert.books.prodev.katas.poker;
 
 import io.vavr.*;
 import io.vavr.collection.*;
+import io.vavr.control.Option;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
+import static io.vavr.API.*;
 
 /**
  * This component is used to check hands for the combos used to evaluate hands
@@ -65,6 +67,50 @@ public class HandChecker {
                 .size()==sizeCriteria.apply()
                 ;
 
+    }
+
+
+    private static Function1<Card,Criteria> sortByRank = Function1.of(card -> card.getRank());
+    private static Function1<Card,Criteria> sortByColor = Function1.of(card -> card.getColor());
+/**
+    private static Map<ComboRanking,ComboSelectorHolder>
+            parametersByComboRankingMap= HashMap(ComboRanking.PAIR,new ComboSelectorHolder(
+                    sortByRank,
+
+            )
+
+
+            );
+*/
+    private static Option<Tuple2<ComboRanking,Rank>> rankHandForCombo(
+            String comboName,
+            Hand targetHand
+
+    ) {
+
+        Function<Card,Criteria> groupingFunction;
+        Predicate<Tuple2<Criteria, List<Card>>> predicate;
+        Function0<Integer> sizeCriteria;
+        /** targetHand.getCards()
+                .groupBy(groupingFunction)
+                .filter(predicate)
+                .size()==sizeCriteria.apply();
+*/
+        return null;
+    }
+
+    private static Tuple2<ComboRanking,Rank> evaluateHand(
+            Hand targetHand
+
+    ) {
+        /**
+        return targetHand.getCards()
+                .groupBy(groupingFunction)
+                .filter(predicate)
+                .size()==sizeCriteria.apply()
+                ;
+        */
+        return null;
     }
 
 

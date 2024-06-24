@@ -24,8 +24,9 @@ New difficult point here, ACE  value!! Refactoring, new data structure handling,
 
 == Step 9 : Evaluating hands
 We need to get a score (number) for a given hand:
-+  introduce a new enum with possible hand evaluation (from CARD_VALUE if no combo found  to ROYAL FLUSH)
-+ change the boolean type to a Tuple containing the combo rating, rank for this combo 
-+ use pattern matching to return the score
+
+-  introduce a new enum with possible hand evaluation (from CARD_VALUE if no combo found  to ROYAL FLUSH)
+- change the boolean type to a Tuple containing the combo rating, rank for this combo
+- use pattern matching to return the score
 
 That 's all folks

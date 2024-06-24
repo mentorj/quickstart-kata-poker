@@ -299,4 +299,38 @@ public class PokerHandsTestssuite {
         HandChecker checker =  new HandChecker();
         assertTrue(checker.handContainsStraight(spadeStraightHand));
     }
+
+    @Test
+    void testPairWithChecker2(){
+        HandChecker2 checker2 = new HandChecker2();
+        assertTrue(checker2.handContainsOnePair(basicPairHand));
+
+    }
+
+    @Test
+    void testFlushWithChecker2(){
+        HandChecker2 checker2 = new HandChecker2();
+        assertTrue(checker2.handContainsFlush(flushHand));
+
+    }
+
+    @Test
+    void aHandWithAPairShouldBeRankedAsAPair(){
+        HandChecker2 checker2 = new HandChecker2();
+        assertTrue(checker2.evaluateHand(basicPairHand)==ComboRanking.PAIR);
+    }
+
+    @Test
+    void aHandWith2PairsShouldBeRankedAs2Pairs(){
+        HandChecker2 checker2 = new HandChecker2();
+        assertTrue(checker2.evaluateHand(twoPairsHand)==ComboRanking.TWO_PAIRS);
+    }
+
+    @Test
+    void aHandWithColorShouldBeRankedAsColor(){
+        HandChecker2 checker2 = new HandChecker2();
+        assertTrue(checker2.evaluateHand(flushHand)==ComboRanking.COLOR);
+        assertFalse(checker2.evaluateHand(basicPairHand)==ComboRanking.COLOR);
+    }
+
 }
